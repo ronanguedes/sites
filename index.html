@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Novo Stillo Barbearia</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <style>
+      .navbar {
+        background-color: #5e4485;
+        color: #fff;
+        font-size: 1.2em;
+      }
+      .navbar-nav .active a,
+      .navbar-nav a:focus,
+      .navbar-nav a:hover {
+        color: #fff;
+        background-color: #5e4485;
+      }
+      .navbar-nav a {
+        color: grey;
+      }
+      .container {
+        margin: 4% auto;
+      }
+
+      .icone {
+        max-width: 200px;
+        margin: auto;
+      }
+      footer {
+        background-color: #5e4485;
+        color: #fff;
+        padding: 3%;
+      }
+      .fa {
+        padding: 10px;
+        font-size: 1.2em;
+        color: #ffffff;
+      }
+
+      .fa:hover {
+        color: #d5d5d5;
+        text-decoration: none;
+      }
+
+      /*##########################################################################################################################*/
+      * {
+          /*.calendar{
+               display: flex;
+            justify-content: center;
+          }a img {
+            width: 200px; /* Ajuste a largura conforme necessário 
+            height: auto;*/
+        }
+
+.calendar {
+  height: 30rem;
+  width: max-content;
+  background-color: white;
+  border-radius: 25px;
+  overflow: hidden;
+  padding: 35px 50px 0px 50px;
+}
+
+.calendar {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.calendar-header {
+  background: #8089FE;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 7px;
+  align-items: center;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 10px;
+};
+
+.calendar-body {
+  padding: 10px;
+}
+
+.calendar-week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: 600;
+  cursor: pointer;
+  color: rgb(104, 104, 104);
+}
+
+.calendar-week-days div:hover {
+  color: black;
+  transform: scale(1.2);
+  transition: all .2s ease-in-out;
+}
+
+.calendar-week-days div {
+  display: grid;
+  place-items: center;
+  color: #6D67CF;
+  height: 50px;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  color: #0A0921;
+}
+
+.calendar-days div {
+  width: 37px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  position: relative;
+  cursor: pointer;
+  animation: to-top 1s forwards;
+}
+
+.month-picker {
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.year-picker {
+  display: flex;
+  align-items: center;
+}
+
+.year-change {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+.year-change:hover {
+  background-color: #9796f0;
+  transition: all .2s ease-in-out;
+  transform: scale(1.12);
+}
+
+.calendar-footer {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#year:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.2 ease-in-out;
+}
+
+.calendar-days div span {
+  position: absolute;
+}
+
+.calendar-days div:hover {
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+  background-color: #fbc7d4;
+  border-radius: 20%;
+  color: #f8fbff;
+}
+
+.calendar-days div.current-date {
+  color: #f8fbff;
+  background-color: #9796f0;
+  border-radius: 20%;
+}
+
+.month-list {
+  position: relative;
+  left: 0;
+  top: -130px;
+  background-color: #ebebeb;
+  color: #151426;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 5px;
+  border-radius: 20px;
+}
+
+.month-list>div {
+  display: grid;
+  place-content: center;
+  margin: 5px 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.month-list>div>div {
+  border-radius: 15px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.month-list>div>div:hover {
+  background-color: #9796f0;
+  color: #f8fbff;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in-out;
+}
+
+.month-list.show {
+  visibility: visible;
+  pointer-events: visible;
+  transition: 0.6s ease-in-out;
+  animation: to-left .71s forwards;
+}
+
+.month-list.hideonce {
+  visibility: hidden;
+}
+
+.month-list.hide {
+  animation: to-right 1s forwards;
+  visibility: none;
+  pointer-events: none;
+}
+
+.date-time-formate {
+  height: 4rem;
+  width: 100%;
+  font-family: Dubai Light, Century Gothic;
+  position: relative;
+  display: flex;
+  top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-text-formate {
+  font-family: Microsoft JhengHei UI;
+  font-size: 1.4rem;
+  padding-right: 5%;
+  border-right: 3px solid #9796f0;
+}
+
+.date-time-value {
+  display: block;
+  position: relative;
+  text-align: center;
+  padding-left: 5%;
+}
+
+.time-formate {
+  font-size: 1.5rem;
+}
+
+.time-formate.hideTime {
+  animation: hidetime 1.5s forwards;
+}
+
+.day-text-formate.hidetime {
+  animation: hidetime 1.5s forwards;
+}
+
+.date-formate.hideTime {
+  animation: hidetime 1.5s forwards;
+}
+
+.day-text-formate.showtime {
+  animation: showtime 1s forwards;
+}
+
+.time-formate.showtime {
+  animation: showtime 1s forwards;
+}
+
+.date-formate.showtime {
+  animation: showtime 1s forwards;
+}
+
+/*download stylo*/
+.download{
+     display: flex;
+            justify-content: center;
+            /*align-items: center;*/
+            
+        }
+        a img {
+            width: 200px; /* Ajuste a largura conforme necessário */
+            height: auto;
+        }
+
+}
+      /*##########################################################################################################################*/
+    </style>
+  </head>
+  <body style="margin-bottom: 55px !important">
+    <div
+      style="
+        position: fixed !important;
+        bottom: 0% !important;
+        width: 100% !important;
+        height: 55px !important;
+        z-index: 9999 !important;
+      "
+    >
+      
+        <div
+          style="
+            padding: 10px !important;
+            background: #5e4485 !important;
+            
+            height: 55px;
+            text-align: center;
+          "
+        >
+          
+        </div>
+      </a>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"
+          ><img src="w3newbie.png" alt=""
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#minha_nav_bar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="minha_nav_bar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#meu_carrosel">Novo Stillo Barbearia</a>
+              <!--href="caminho/para/sua/pagina.html"-->
+            </li>
+            <li class="nav-item"> 
+              <!--href="caminho/para/sua/pagina.html"-->
+             <a class="nav-link" href="#servico">Serviços</a>
+            </li>
+            <li class="nav-item">
+              <!--href="caminho/para/sua/pagina.html"-->
+              <a class="nav-link" href="#informacao">informações</a>
+            </li>
+            <li class="nav-item">
+              <!--href="caminho/para/sua/pagina.html"-->
+              <a class="nav-link" href="#rodape">Contatos</a>
+            </li>
+            <li class="nav-item">
+              <!--href="caminho/para/sua/pagina.html"-->
+              <a class="nav-link" href="agenda.html">agendamento</a>
+           </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- O slideshow ##################################################################################################################################################-->
+    <div id="meu_carrosel" class="carousel slide" data-ride="carousel">
+      <!-- Indicadores -->
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+      </ul>
+      
+      <div class="carousel-inner">
+  <div class="carousel-item active">
+    <img class="d-block w-100" src="foto1.jpeg" alt="mountains" width="600" height="600"/>
+  </div>
+  <div class="carousel-item">
+    <img class="d-block w-100" src="foto2.jpeg" alt="red" width="400" height="600"/>
+  </div>
+  <div class="carousel-item">
+    <img class="d-block w-100" src="foto3.jpeg" alt="snow" width="720" height="600"/>
+  </div>
+  
+  <a class="carousel-control-prev" href="#meu_carrosel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  
+  <a class="carousel-control-next" href="#meu_carrosel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+
+    <!--Contoles##################################################################################################################################################-->
+    <div class="container text-center">
+      <h2>Novo Stillo Barbearia</h2>
+      
+      <div class="row">
+        <div class="col-sm-4">
+          <img src="img3.jpg" class="icone" />
+          <h4>cabelo</h4>
+        </div>
+        <div class="col-sm-4">
+          <img src="img2.jpg" class="icone" />
+          <h4>Barba</h4>
+        </div>
+        <div class="col-sm-4">
+          <img src="img1.jpg" class="icone" />
+          <h4>Bigode</h4>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Barbearia Novo Stilo</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Sobre o Novo Stilo</h4>
+          <p>
+            Na barbearia tradicional, cada corte é uma história contada com navalhas afiadas e mãos habilidosas,
+             onde o cliente encontra mais do que um simples serviço, mas uma experiência de cuidado e tradição.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <img src="rosto.jpg" class="img-fluid" alt="snow" width="250" height="100"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>O que está sendo usado Novo Stilo</h2>
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <h4>Sobre o Novo Stilo</h4>
+          <p>
+            O aroma de loções e o som das tesouras em uma barbearia ecoam como um convite ao relaxamento e à masculinidade clássica,
+             onde os homens encontram não apenas um corte de cabelo, mas uma pausa em meio ao agito da vida cotidiana.
+          </p>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <img src="img4.jpg" class="img-fluid" />
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <h4>Sobre o Novo Stilo</h4>
+          <p>
+            Nas conversas animadas e risadas compartilhadas entre clientes e barbeiros, a barbearia se torna mais do que um local para cuidar da aparência, 
+            transformando-se em um espaço de camaradagem e confiança, onde histórias são trocadas tão facilmente quanto os cortes de cabelo.
+          </p>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <img src="logobarber1.jpg" class="img-fluid" width="200" height="100"/>
+        </div>
+      </div>
+    </div>
+    
+    <div id="informacao" class="container">
+      <div class="row">
+        <h4>
+          <a href="#secao_escondida" data-toggle="collapse">Horario de funcionamento Barbearia Novo Stilo</a>
+        </h4>
+        <div id="secao_escondida" class="collapse">
+          <br>
+          <p>Atendimento via whatsapp.</p>
+          <p>Horario 8:00 até 11:00</p>
+          <p>intervalo de 2 horas, com horario retorno.</p>
+          <p>horario 14:00 até 18 horas</p>
+          <br>
+          <h6>Atendemos de segunda a sexta feira</h6>
+          <br>
+          <p>Barbearia Novo Stilo é uma experiência única, onde os clientes encontram uma barbearia que combina a tradição com a modernidade, oferecendo cortes de cabelo personalizados e um atendimento impecável.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Contato</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <p>Endereço de contato e informações aqui.</p>
+          <p>whatsapp: <a href="https://wa.me/5534992255884" target="_blank" title="" rel="noopener">(34) 9.99073560</a></p>
+          <p>E-mail: <a href="mailto:novostrilo@gmail.com">NovoStilloBarbearia@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+    <!-- calendario-->
+
+    <!-- Seção de Agendamentos -->
+<div id="servico" class="container">
+  <h2>Agendamentos</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <form id="agendamentoForm" method="post" action="inserir_agendamento.php">
+        <div class="form-group">
+          <label for="clienteNome">Nome do Cliente:</label>
+          <input type="text" class="form-control" id="clienteNome" name="clienteNome" required>
+        </div>
+
+        <div class="form-group">
+           
+    <label for="clienteTelefone">Telefone:</label>
+   <input type="tel" class="form-control" id="clienteTelefone" name="clienteTelefone" placeholder="(xx) xxxx-xxxx" maxlength="15"  autocomplete="tel" required>
+ 
+    </div>
+
+        <div class="form-group">
+          <label for="dataAgendamento">Data:</label>
+          <input type="date" class="form-control" id="dataAgendamento" name="dataAgendamento" required>
+        </div>
+        <div class="form-group">
+          <label for="horaAgendamento">Hora:</label>
+          <input type="time" class="form-control" id="horaAgendamento" name="horaAgendamento" required>
+        </div>
+        <button id="agenda" type="submit" class="btn btn-primary">Agendar</button>
+      
+    </div>
+    <div class="col-md-6">
+      <h4>Lista de Agendamentos</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Telefone</th>
+            <th>Data</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody id="agendamentosTabela">
+          <!-- Agendamentos serão inseridos aqui -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+    <!-- Calendario --> 
+    <div class="contianer">
+    <div class="calendar">
+      <div class="calendar-header">
+        <span class="month-picker" id="month-picker"> May </span>
+        <div class="year-picker" id="year-picker">
+          <span class="year-change" id="pre-year">
+            <pre><</pre>
+          </span>
+          <span id="year">2020 </span>
+          <span class="year-change" id="next-year">
+            <pre>></pre>
+          </span>
+        </div>
+      </div>
+
+      <div class="calendar-body">
+        <div class="calendar-week-days">
+          <div>Dom</div>
+          <div>seg</div>
+          <div>ter</div>
+          <div>quar</div>
+          <div>qui</div>
+          <div>sex</div>
+          <div>Sab</div>
+        </div>
+        <div class="calendar-days">
+        </div>
+      </div>
+      <div class="calendar-footer">
+      </div>
+      <div class="date-time-formate">
+        <div class="day-text-formate">Hoje</div>
+        <div class="date-time-value">
+          <div class="time-formate">01:41:20</div>
+          <div class="date-formate">03 - march - 2022</div>
+        </div>
+      </div>
+      <div class="month-list"></div>
+    </div>
+  </div>
+    <!-- ######################################################################-->
+    <div class="download">
+         <!-- Substitua "caminho-para-o-arquivo.extensão" pelo caminho do arquivo que você deseja disponibilizar para download -->
+    <a href="https://www.mediafire.com/file/bolhwiqr8je3o4a/NovoStilloBarbearia.apk/file" download>
+        <!-- Substitua "caminho-para-imagem.jpg" pelo caminho da imagem que você deseja usar -->
+        <img src="googleplay.png" alt="Descrição da Imagem" style="width:200px;height:auto;">
+    </a>
+
+        </div>
+    
+    <footer class="container-fluid text-center">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>Contato</h3>
+          <br />
+          <h4>Click na imagem para info via E-mail:</h4>
+          <!--<button class="btn btn-primary"><i class="fa fa-envelope"></i> Enviar Email</button> -->
+          <a href="mailto:novostrilo@gmail.com" target="_blank" title="" rel="noopener">
+        <!-- Substitua "caminho-para-imagem.jpg" pelo caminho da imagem que você deseja usar -->
+        <img src="email4.png" alt="Descrição da Imagem" style="width:100px;height:auto;" >
+    </a>
+        </div>
+        <div class="col-sm-4">
+          <h3>Conecte</h3>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-google"></i></a>
+          <a href="l"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+        </div>
+      </div>
+      <div id="rodape" class="imagenet_rodape_blocos">
+          <a href="https://wa.me/5534999073560" target="_blank" title="" rel="noopener">
+        <!-- Substitua "caminho-para-imagem.jpg" pelo caminho da imagem que você deseja usar -->
+        <img src="whatsapp.png" alt="Descrição da Imagem" style="width:200px;height:auto;">
+    </a>
+        
+        <!--<p>E-mail: <a href="mailto:novostrilo@gmail.com">NovoStilloBarbearia@gmail.com</a></p>-->
+      </div>
+    </footer>
+    
+    <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Remove the restriction on the scheduling time by removing the event listener
+    document.getElementById('agendamentoForm').addEventListener('agenda', function(event) {
+      // const horaAgendamento = document.getElementById('horaAgendamento').value;
+      // const hora = parseInt(horaAgendamento.split(':')[0], 10);
+
+      // if (hora < 8 || hora >= 18) {
+      //   event.preventDefault();
+      //   alert('Agendamentos só podem ser feitos entre 8h e 18h.');
+      // }
+    });
+
+    function carregarAgendamentos() {
+      fetch('listar_agendamentos.php')
+        .then(response => response.json())
+        .then(agendamentos => {
+          const tabela = document.getElementById('agendamentosTabela');
+          tabela.innerHTML = '';
+          agendamentos.forEach(agendamento => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${agendamento.nome}</td>
+              <td>${agendamento.telefone}</td>
+              <td>${agendamento.data}</td>
+              <td>${agendamento.hora}</td>
+            `;
+            tabela.appendChild(row);
+          });
+        });
+    }
+
+    function deletarAgendamentosAntigos() {
+      fetch('deletar_agendamentos_antigos.php', {
+        method: 'POST',
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          console.log(result.message);
+          carregarAgendamentos();
+        } else {
+          console.error('Erro ao deletar agendamentos antigos: ' + result.message);
+        }
+      })
+      .catch(error => console.error('Erro na requisição para deletar agendamentos antigos:', error));
+    }
+
+    // Chama a função para deletar agendamentos antigos e carregar agendamentos ao carregar a página
+    deletarAgendamentosAntigos();
+    carregarAgendamentos();
+  });
+</script>
+    
+  <!-- calendario java script -->
+  <script>
+      const isLeapYear = (year) => {
+  return (
+    (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
+    (year % 100 === 0 && year % 400 === 0)
+  );
+};
+
+const getFebDays = (year) => {
+  return isLeapYear(year) ? 29 : 28;
+};
+
+let calendar = document.querySelector('.calendar');
+const month_names = [
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro',
+];
+
+let month_picker = document.querySelector('#month-picker');
+const dayTextFormate = document.querySelector('.day-text-formate');
+const timeFormate = document.querySelector('.time-formate');
+const dateFormate = document.querySelector('.date-formate');
+
+month_picker.onclick = () => {
+  month_list.classList.remove('hideonce');
+  month_list.classList.remove('hide');
+  month_list.classList.add('show');
+  dayTextFormate.classList.remove('showtime');
+  dayTextFormate.classList.add('hidetime');
+  timeFormate.classList.remove('showtime');
+  timeFormate.classList.add('hideTime');
+  dateFormate.classList.remove('showtime');
+  dateFormate.classList.add('hideTime');
+};
+
+const generateCalendar = (month, year) => {
+  let calendar_days = document.querySelector('.calendar-days');
+  calendar_days.innerHTML = '';
+
+  let calendar_header_year = document.querySelector('#year');
+  let days_of_month = [
+    31,
+    getFebDays(year),
+    31,
+    30,
+    31,
+    30,
+    31,
+    31,
+    30,
+    31,
+    30,
+    31,
+  ];
+
+  let currentDate = new Date();
+
+  month_picker.innerHTML = month_names[month];
+  calendar_header_year.innerHTML = year;
+
+  let first_day = new Date(year, month);
+
+  for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+    let day = document.createElement('div');
+
+    if (i >= first_day.getDay()) {
+      day.innerHTML = i - first_day.getDay() + 1;
+
+      if (
+        i - first_day.getDay() + 1 === currentDate.getDate() &&
+        year === currentDate.getFullYear() &&
+        month === currentDate.getMonth()
+      ) {
+        day.classList.add('current-date');
+      }
+    }
+    calendar_days.appendChild(day);
+  }
+};
+
+let month_list = calendar.querySelector('.month-list');
+month_names.forEach((e, index) => {
+  let month = document.createElement('div');
+  month.innerHTML = `<div>${e}</div>`;
+
+  month_list.append(month);
+  month.onclick = () => {
+    currentMonth.value = index;
+    generateCalendar(currentMonth.value, currentYear.value);
+    month_list.classList.replace('show', 'hide');
+    dayTextFormate.classList.remove('hideTime');
+    dayTextFormate.classList.add('showtime');
+    timeFormate.classList.remove('hideTime');
+    timeFormate.classList.add('showtime');
+    dateFormate.classList.remove('hideTime');
+    dateFormate.classList.add('showtime');
+  };
+});
+
+(function () {
+  month_list.classList.add('hideonce');
+})();
+document.querySelector('#pre-year').onclick = () => {
+  --currentYear.value;
+  generateCalendar(currentMonth.value, currentYear.value);
+};
+document.querySelector('#next-year').onclick = () => {
+  ++currentYear.value;
+  generateCalendar(currentMonth.value, currentYear.value);
+};
+
+let currentDate = new Date();
+let currentMonth = { value: currentDate.getMonth() };
+let currentYear = { value: currentDate.getFullYear() };
+generateCalendar(currentMonth.value, currentYear.value);
+
+const todayShowTime = document.querySelector('.time-formate');
+const todayShowDate = document.querySelector('.date-formate');
+
+const currshowDate = new Date();
+const showCurrentDateOption = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  weekday: 'long',
+};
+const currentDateFormate = new Intl.DateTimeFormat(
+  'pt-BR',
+  showCurrentDateOption
+).format(currshowDate);
+todayShowDate.textContent = currentDateFormate;
+
+setInterval(() => {
+  const timer = new Date();
+  const option = {
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric',
+  };
+  const formateTimer = new Intl.DateTimeFormat('pt-BR', option).format(timer);
+  let time = `${`${timer.getHours()}`.padStart(
+    2,
+    '0'
+  )}:${`${timer.getMinutes()}`.padStart(
+    2,
+    '0'
+  )}:${`${timer.getSeconds()}`.padStart(2, '0')}`;
+  todayShowTime.textContent = formateTimer;
+}, 1000);
+
+  </script>
+  <!-- cliente telefone -->
+<script>
+        document.getElementById('clienteTelefone').addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+    </script>
+</body>
+</html>

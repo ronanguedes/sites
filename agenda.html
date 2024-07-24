@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Novo Stillo Barbearia</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        .navbar {
+          background-color: #5e4485;
+          color: #fff;
+          font-size: 1.2em;
+        }
+        .navbar-nav .active a,
+        .navbar-nav a:focus,
+        .navbar-nav a:hover {
+          color: #fff;
+          background-color: #5e4485;
+        }
+        .navbar-nav a {
+          color: grey;
+        }
+        .container {
+          margin: 4% auto;
+        }
+  
+        .icone {
+          max-width: 200px;
+          margin: auto;
+        }
+        footer {
+          background-color: #5e4485;
+          color: #fff;
+          padding: 3%;
+        }
+        .fa {
+          padding: 10px;
+          font-size: 1.2em;
+          color: #ffffff;
+        }
+  
+        .fa:hover {
+          color: #d5d5d5;
+          text-decoration: none;
+        }
+        </style>
+</head>
+<body>
+      <!-- Seção de Agendamentos -->
+<div id="servico" class="container">
+  <h2>Obs Agendamentos dás 8h as 18h</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <form id="agendamentoForm" method="post" action="inserir_agendamento.php">
+        <div class="form-group">
+          <label for="clienteNome">Nome do Cliente:</label>
+          <input type="text" class="form-control" id="clienteNome" name="clienteNome" required>
+        </div>
+
+        <div class="form-group">
+           
+    <label for="clienteTelefone">Telefone:</label>
+   <input type="tel" class="form-control" id="clienteTelefone" name="clienteTelefone" placeholder="(xx) xxxx-xxxx" maxlength="15"  autocomplete="tel" required>
+ 
+    </div>
+
+        <div class="form-group">
+          <label for="dataAgendamento">Data:</label>
+          <input type="date" class="form-control" id="dataAgendamento" name="dataAgendamento" required>
+        </div>
+        <div class="form-group">
+          <label for="horaAgendamento">Hora:</label>
+          <input type="time" class="form-control" id="horaAgendamento" name="horaAgendamento" required>
+        </div>
+        <button id="agenda" type="submit" class="btn btn-primary">Agendar</button>
+      
+    </div>
+    <div class="col-md-6">
+      <h4>Lista de Agendamentos</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Telefone</th>
+            <th>Data</th>
+            <th>Hora</th>
+          </tr>
+        </thead>
+        <tbody id="agendamentosTabela">
+          <!-- Agendamentos serão inseridos aqui -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <footer class="container-fluid text-center">
+      <div class="row">
+        <div class="col-sm-4">
+          <h3>Contato</h3>
+          <br />
+          <h4>Endereco de contato e info</h4>
+          <button class="btn btn-primary"><i class="fa fa-envelope"></i> Enviar Email</button>
+        </div>
+        <div class="col-sm-4">
+          <h3>Conecte</h3>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-google"></i></a>
+          <a href="l"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+        </div>
+      </div>
+      <div id="rodape" class="imagenet_rodape_blocos">
+        <p>whatsapp: <a href="https://wa.me/5534992255884" target="_blank" title="" rel="noopener">(34) 9.99073560</a></p>
+        <p>E-mail: <a href="mailto:novostrilo@gmail.com">NovoStilloBarbearia@gmail.com</a></p>
+      </div>
+    </footer>
+
+    <script type="text/javascript">
+        function onButtonClick() {
+            // Chama a função showToast da interface JavaScript do Android
+            Android.showToast('Botão clicado!');
+        }
+    </script>
+
+   <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Remove the restriction on the scheduling time by removing the event listener
+    document.getElementById('agendamentoForm').addEventListener('agenda', function(event) {
+      // const horaAgendamento = document.getElementById('horaAgendamento').value;
+      // const hora = parseInt(horaAgendamento.split(':')[0], 10);
+
+      // if (hora < 8 || hora >= 18) {
+      //   event.preventDefault();
+      //   alert('Agendamentos só podem ser feitos entre 8h e 18h.');
+      // }
+    });
+
+    function carregarAgendamentos() {
+      fetch('listar_agendamentos.php')
+        .then(response => response.json())
+        .then(agendamentos => {
+          const tabela = document.getElementById('agendamentosTabela');
+          tabela.innerHTML = '';
+          agendamentos.forEach(agendamento => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${agendamento.nome}</td>
+              <td>${agendamento.telefone}</td>
+              <td>${agendamento.data}</td>
+              <td>${agendamento.hora}</td>
+            `;
+            tabela.appendChild(row);
+          });
+        });
+    }
+
+    function deletarAgendamentosAntigos() {
+      fetch('deletar_agendamentos_antigos.php', {
+        method: 'POST',
+      })
+      .then(response => response.json())
+      .then(result => {
+        if (result.success) {
+          console.log(result.message);
+          carregarAgendamentos();
+        } else {
+          console.error('Erro ao deletar agendamentos antigos: ' + result.message);
+        }
+      })
+      .catch(error => console.error('Erro na requisição para deletar agendamentos antigos:', error));
+    }
+
+    // Chama a função para deletar agendamentos antigos e carregar agendamentos ao carregar a página
+    deletarAgendamentosAntigos();
+    carregarAgendamentos();
+  });
+</script>
+
+<script>
+        document.getElementById('clienteTelefone').addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        });
+    </script>
+
+</body>
+</html>
